@@ -38,6 +38,7 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             guard let restaurants = restaurants else {
                 return
             }
+            //print(restaurants)
             self.restaurantsArray = restaurants
             self.tableView.reloadData() // reload data!
         }

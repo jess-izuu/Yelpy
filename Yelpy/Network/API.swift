@@ -15,7 +15,7 @@ struct API {
     
     static func getRestaurants(completion: @escaping ([[String:Any]]?) -> Void) {
 
-        let apikey = "d33G9DdpAnXXDwz5lo_uT5cGbyvPP9eiAMzuyAJyRcgUzdrFzTf2dfjgw757zRNj5bpGqCDv_1owN1_KC0_KZEhCI3KU8i6tA01zqxDsR0nU4tJixahisr37oY6pX3Yx"
+        let apikey = ""
         
         // Coordinates for San Francisco
         let lat = 37.773972
@@ -24,7 +24,7 @@ struct API {
         
         let url = URL(string: "https://api.yelp.com/v3/transactions/delivery/search?latitude=\(lat)&longitude=\(long)")!
         
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
         
         // Insert API Key to request
         request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
