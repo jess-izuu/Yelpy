@@ -42,8 +42,9 @@ struct API {
                 print(data)
                 
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String:Any]
-                
+                //print(dataDictionary)
                 let restaurants = dataDictionary["businesses"] as! [[String:Any]]
+                //print(restaurants)
                 return completion(restaurants)
                 
                 }

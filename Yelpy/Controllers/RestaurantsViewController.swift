@@ -28,6 +28,7 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.delegate = self
         tableView.dataSource = self
+        getAPIData()
     }
     
     
@@ -37,8 +38,8 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             guard let restaurants = restaurants else {
                 return
             }
-            print(restaurants)
             self.restaurantsArray = restaurants
+            self.tableView.reloadData() // reload data!
         }
     }
     
@@ -48,12 +49,12 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-        let restaurants = restaurantsArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
+        let restaurant = restaurantsArray[indexPath.row]
         
-        cell.label.text = restaurants["name"] as? String ?? ""
+        cell.label.text = restaurant["name"] as? String ?? ""
         
-        if let imageUrlString = restaurants["image_url"] as? String {
+        if let imageUrlString = restaurant["image_url"] as? String {
             let imageUrl = URL(string: imageUrlString)
             cell.restaurantImage.af.setImage(withURL: imageUrl!)
         }
